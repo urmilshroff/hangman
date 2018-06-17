@@ -17,28 +17,26 @@ def start():
         else:
             print("Please enter a valid difficulty level!")'''
         
-    answer=updater(question,answer,"aeiou") #answer variable gets overriden
-    trial(answer)
+    temp=updater(question,answer,"aeiou",0)
+    trial(question,temp)
 
-def updater(question,answer,string):
-    
+def updater(question,answer,string,flag):
     temp=[]
     
     for i in range(len(question)):
-        
         for j in range(len(string)):
             if (question[i]==string[j]):
                 answer[i]=string[j]
                 temp.append(i) #stores position of matched variables
-    
-        if i not in temp:
+                
+        if i not in temp and flag==0: #should put underscores only the first time
             answer[i]="_"
 
+    print("Q & A at this stage is",question,answer)
     return answer
     
-def trial(answer):
-    letter=int(input("Enter a letter:\n"))
-    updater(answer,letter)
+def trial(question,answer):
+    temp=updater(question,answer,input("Enter a letter:\n"),1)
 
 start()
 
