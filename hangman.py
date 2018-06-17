@@ -3,7 +3,7 @@ import random
 
 print("WELCOME TO HANGMAN!")
 
-cars=("ferrari","lamborghini","bavarian motor works","mercedes benz","bugatti","koenigsegg","pagani","ford","chrysler","chevrolet") #tuple of hangman words
+cars=("ferrari","lamborghini","bavarian motor works","mercedes","bugatti","koenigsegg","pagani","ford","chrysler","chevrolet") #tuple of hangman words
 
 question=cars[random.randint(0,(len(cars)-1))] #picks a random word from tuple as the question
 answer=numpy.empty(len(question),str)
@@ -36,11 +36,6 @@ def updater(question,answer,string,flag):
     return answer
     
 def trial(question,answer):
-    while "_" not in answer:
-        temp=updater(question,answer,input("Enter a letter:\n"),1)
+    temp=updater(question,answer,input("Enter a letter:\n"),1)
 
 start()
-
-
-
-
