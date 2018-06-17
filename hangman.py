@@ -36,7 +36,8 @@ def updater(question,answer,string,flag):
     return answer
     
 def trial(question,answer):
-    temp=updater(question,answer,input("Enter a letter:\n"),1)
+    while "_" not in answer:
+        temp=updater(question,answer,input("Enter a letter:\n"),1)
 
 start()
 
