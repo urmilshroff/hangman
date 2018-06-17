@@ -6,6 +6,7 @@ print("WELCOME TO HANGMAN!")
 cars=("ferrari","lamborghini","bavarian motor works","mercedes benz","bugatti","koenigsegg","pagani","ford","chrysler","chevrolet") #tuple of hangman words
 
 question=cars[random.randint(0,(len(cars)-1))] #picks a random word from tuple as the question
+answer=numpy.empty(len(question),str)
 
 def start():
 
@@ -16,10 +17,11 @@ def start():
         else:
             print("Please enter a valid difficulty level!")'''
         
-    yoyoyo(question,"aeiou")
+    answer=updater(question,answer,"aeiou") #answer variable gets overriden
+    trial(answer)
 
-def yoyoyo(question,string):
-    answer=numpy.empty(len(question),str)
+def updater(question,answer,string):
+    
     temp=[]
     
     for i in range(len(question)):
@@ -31,18 +33,14 @@ def yoyoyo(question,string):
     
         if i not in temp:
             answer[i]="_"
+
+    return answer
     
-    print(question,answer)
-    
+def trial(answer):
+    letter=int(input("Enter a letter:\n"))
+    updater(answer,letter)
 
-while True:
-    if input("Do you want to play?\n")!="no":
-        start()
-    else:
-        break
-
-
-
+start()
 
 
 
