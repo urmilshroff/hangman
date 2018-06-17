@@ -17,16 +17,16 @@ while True:
 
 for letter in range(len(question)):
     if (question[letter]=="a"):
-        answer[letter]="a"
+        answer.append("a")
     elif (question[letter]=="e"):
-        answer[letter]="e"
+        answer.append("e")
     elif (question[letter]=="i"):
-        answer[letter]="i"
+        answer.append("i")
     elif (question[letter]=="o"):
-        answer[letter]="o"
+        answer.append("o")
     elif (question[letter]=="u"):
-        answer[letter]="u"
+        answer.append("u")
     else:
-        answer[letter]="_"
+        answer.append("_")
         
-    print(answer)
+print(question,answer)
