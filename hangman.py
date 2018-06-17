@@ -8,12 +8,13 @@ size=len(question)
 
 print("WELCOME TO HANGMAN!\n")
 
-while True:
+'''while True:
     level=int(input("Choose your level of difficulty:\n1. Baby\n2. Easy\n3. Medium\n4. Hard\n5. Impossible\n"))
     if (level>=1) and (level<=5):
         break
     else:
-        print("Please enter a valid difficulty level!")
+        print("Please enter a valid difficulty level!")'''
+
 
 for letter in range(len(question)):
     if (question[letter]=="a"):
@@ -29,4 +30,20 @@ for letter in range(len(question)):
     else:
         answer.append("_")
         
-print(question,answer)
+
+for letter in range(len(answer)): #question and answer have same length
+    if (answer[letter]=="_"):
+        print("It happened in position {}".format(letter))
+
+
+
+
+
+
+
+
+
+
+
+
+
