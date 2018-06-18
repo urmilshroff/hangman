@@ -12,13 +12,13 @@ def start():
 
     while True:
         level=int(input("Choose your level of difficulty:\n1. Baby\n2. Easy\n3. Medium\n4. Hard\n5. Impossible\n"))
-        if (level==1) and (level<=5):
+        if (level>=1) and (level<=5):
+            temp=updater(question,answer,"aeiou",0)
+            trial(question,temp,6-level) #try to replace temp with updater() call
             break
         else:
             print("Please enter a valid difficulty level!")
         
-    temp=updater(question,answer,"aeiou",0)
-    trial(question,temp,6-level)
 
 def updater(question,answer,string,flag):
     temp=[]
@@ -33,12 +33,24 @@ def updater(question,answer,string,flag):
             answer[i]="_"
 
     print("Q & A at this stage is",question,answer)
-    return answer
+
+    for i in range(len(question)):
+        if(question[i]!=answer[i]):
+            return 0
+            break
+
+    return 1
+
     
+
 def trial(question,answer,attempts):
     while attempts>0:
-        print("Attempt {}".format(attempts))
-        temp=updater(question,answer,input("Enter a letter:\n"),1)
+        print("Attempt number",attempts)
+        breaker=updater(question,answer,input("Enter a letter:\n"),1)
         attempts-=1
+        if (breaker==1):
+            break
+
+    print("Game over")
 
 start()
