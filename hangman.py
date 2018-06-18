@@ -12,63 +12,53 @@ def start():
 
     while True:
         level=int(input("Choose your level of difficulty:\n1. Baby\n2. Easy\n3. Medium\n4. Hard\n5. Impossible\n"))
-        if (level>=1) and (level<=5):
+        if level>=1 and level<=5:
             break
         else:
             print("Please enter a valid difficulty level!")
         
-    temp=updater(question,answer,"aeiou",0)
-    trial(question,temp,6-level) #5 attempts if you're a baby
+    consonantAnswer=updater(question,answer,"aeiou",0)
+    attempt(question,consonantAnswer,6-level) #5 attempts if you're a baby
 
 
 
-def updater(question,answer,string,flag):
+def updater(question,answer,string,caller):
     temp=[]
     isCorrect=1 #by default it is assumed that answer is correct
     
     for i in range(len(question)):
         for j in range(len(string)):
-            if (question[i]==string[j]):
+            if question[i]==string[j]:
                 answer[i]=string[j]
                 temp.append(i) #stores position of matched variables
                 
-        if i not in temp and flag==0: #should put underscores only the first time
+        if i not in temp and caller==0: #should put underscores only if start() calls it
             answer[i]="_"
             
-    print(answer)
-    madarchod=0
     for i in range(len(question)):
-        if(question[i]!=answer[i]) and flag==1: #if answer is still not completely correct and should run only with user input
-            madarchod=1
+        if question[i]!=answer[i] and caller==1: #if answer is still not completely correct and attempt() calls it
+            isCorrect=0 #set to False i.e. isWrong==True
             return 0
             break
-    
-    if madarchod==0 and flag==1:
-        return 1        
             
-        
+    if isCorrect==1 and caller==1: #if answer is clean
+        return 1
             
     return answer
     
     
     
-def trial(question,answer,attempts):
+def attempt(question,answer,attempts):
+
     while attempts>0:
-        temp=0
-        temp=updater(question,answer,input("Enter a letter:\n"),1)
+        isCorrect=updater(question,answer,input("Enter a letter:\n"),1) #last parameter means attempt() is calling it
         attempts-=1
         
-        if (temp==1):
+        if isCorrect==1:
+            print("Congratulations, your guess of {} is correct!".format(question))
             break
+            
+    if isCorrect==0: #if while loop ends and no correct guess was made
+        print("Oops, you ran out of attempts! The correct answer was {}.".format(question))
 
 start()
-
-
-
-
-
-
-
-
-
-
