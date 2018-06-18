@@ -3,7 +3,11 @@ import random
 
 print("WELCOME TO HANGMAN!")
 
+<<<<<<< HEAD
 cars=("ferrari","lamborghini","mercedes","bugatti","koenigsegg","pagani","ford","chrysler","chevrolet","dodge") #tuple of hangman words
+=======
+cars=("ferrari","lamborghini","bavarian motor works","mercedes benz","bugatti","koenigsegg","pagani","ford","chrysler","chevrolet") #tuple of hangman words
+>>>>>>> parent of e12d330... Goodnight
 
 question=cars[random.randint(0,(len(cars)-1))] #picks a random word from tuple as the question
 answer=numpy.empty(len(question),str)
@@ -42,6 +46,7 @@ def updater(question,answer,string,flag):
     return 1
 
     
+<<<<<<< HEAD
 
 def trial(question,answer,attempts):
     while attempts>0:
@@ -52,5 +57,14 @@ def trial(question,answer,attempts):
             break
 
     print("Game over")
+=======
+def trial(question,answer):
+    while "_" not in answer:
+        temp=updater(question,answer,input("Enter a letter:\n"),1)
 
 start()
+
+
+
+>>>>>>> parent of e12d330... Goodnight
+
