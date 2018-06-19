@@ -34,7 +34,7 @@ def start():
 
 def updater(question,answer,string,caller):
     temp=[]
-    isCorrect=1 #by default it is assumed that answer is correct
+    isCorrect=True #by default it is assumed that answer is correct
     
     for i in range(len(question)):
         for j in range(len(string)):
@@ -49,12 +49,12 @@ def updater(question,answer,string,caller):
             
     for i in range(len(question)):
         if question[i]!=answer[i] and caller==1: #if answer is still not completely correct and attempt() calls it
-            isCorrect=0 #set to False i.e. isWrong==True
-            return 0
+            isCorrect=False
+            return False
             break
             
-    if isCorrect==1 and caller==1: #if answer is clean
-        return 1
+    if isCorrect and caller==1: #if answer is clean
+        return True
             
     return answer
 
@@ -69,11 +69,11 @@ def attempt(question,answer,attempts):
         attempts-=1
         tries+=1
         
-        if isCorrect==1:
+        if isCorrect:
             print("\nCongratulations, you guessed the car in {} tries!\n".format(tries-1))
             break
             
-    if isCorrect==0: #if while loop ends and no correct guess was made
+    if isCorrect==False: #if while loop ends and no correct guess was made
         print("\nOops, you ran out of attempts! The correct answer was {}.\n".format(question))
 
 start()
