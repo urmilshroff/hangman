@@ -37,7 +37,7 @@ def updater(question,answer,string,caller):
     isCorrect=True #by default it is assumed that answer is correct
     
     for i in range(len(question)):
-        for j in range(len(string)):
+        for j in range(len(string)): #major bug here!
             if question[i]==string[j]:
                 answer[i]=string[j]
                 temp.append(i) #stores position of matched variables
